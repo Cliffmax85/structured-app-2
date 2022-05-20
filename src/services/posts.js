@@ -25,3 +25,12 @@ export async function updatePost({ id, description }) {
     .single();
   return checkError(request);
 }
+
+export async function getPost(id) {
+  const request = await client
+    .from('posts')
+    .select()
+    .match({ id })
+    .single();
+  return checkError(request);
+}
