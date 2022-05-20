@@ -20,8 +20,8 @@ export default function Home() {
     fetchPosts();
   }, []);
   
-  console.log('poststs', posts[0]);
-  console.log(user);
+  // console.log('poststs', posts);
+  // console.log(user);
 
   return (
     <>
@@ -40,7 +40,7 @@ export default function Home() {
                         {post.name}</li>
                          )))}</ul>
             </Route>
-            <Route path="/details/:id">
+            <Route exact path="/details/:id">
               <PostDetail />
             </Route>
             <Route>

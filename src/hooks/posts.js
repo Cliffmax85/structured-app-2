@@ -11,7 +11,7 @@ export function usePosts() {
 
     const { posts, dispatch } = context;
 
-    
+console.log('3posts3', );    
     useEffect(() => {
         if (posts) return;
         const load = async () => {
@@ -46,6 +46,7 @@ export function usePost(id) {
     const { posts, dispatch } = context;
 
     const [post, setPost] = useState(null);
+    console.log('posts2', post);
 
     useEffect(() => {
         const load = async () => {
