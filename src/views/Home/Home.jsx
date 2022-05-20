@@ -3,6 +3,7 @@ import { useEffect, useState } from 'react';
 import { getPosts } from '../../services/posts';
 import { useUser } from '../../context/UserContext';
 import Posts from '../../components/Posts';
+import PostDetail from '../PostDetail/PostDetail';
 
 export default function Home() {
   const { user, logout } = useUser();
@@ -40,7 +41,7 @@ export default function Home() {
                          )))}</ul>
             </Route>
             <Route path="/details/:id">
-              <h1>details</h1>
+              <PostDetail />
             </Route>
             <Route>
               <div className="listView">
