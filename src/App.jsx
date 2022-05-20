@@ -5,6 +5,8 @@ import { UserProvider } from './context/UserContext';
 import PrivateRoute from './components/PrivateRoute/PrivateRoute';
 import Header from './views/Header/Header';
 import { PostsProvider } from './context/PostsContext';
+import PostDetail from './views/PostDetail/PostDetail';
+import Post from './components/Posts'
 
 export default function App() {
   return (
@@ -17,7 +19,7 @@ export default function App() {
               <Auth />
             </Route>
             <PrivateRoute path="/posts">
-              <Auth />
+              <Post />
             </PrivateRoute>
             <PrivateRoute path="/">
               <Home />
