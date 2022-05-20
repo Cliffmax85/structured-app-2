@@ -11,13 +11,13 @@ export function usePosts() {
 
     const { posts, dispatch } = context;
 
-console.log('3posts3', );    
     useEffect(() => {
         if (posts) return;
         const load = async () => {
             try {
                 const payload = await getPosts();
                 dispatch({ type: 'reset', payload: payload });
+                console.log('|||LOAD', payload);
             } catch (error) {
                 throw new Error('Somethign went wrong getting data')
             }
@@ -29,6 +29,7 @@ console.log('3posts3', );
         try {
             const newPost = await createPost(post);
             dispatch({ type: 'create', payload: newPost })
+            console.log('||||OTHER PAYLOAD', newPost);
         } catch (error) {
             throw new Error('could not add new post');
         }
@@ -65,7 +66,7 @@ export function usePost(id) {
 
         try {
             const updated = await updatePost({ ...post, ...edits });
-            const payload = { ...updated, name: posts.name };
+            const payload = { ...updated };
             setPost(payload);
             if (posts) dispatch({ type: 'update', payload });
             return payload;

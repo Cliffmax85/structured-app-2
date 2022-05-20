@@ -2,7 +2,7 @@ import { Link, BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import { useEffect, useState } from 'react';
 import { getPosts } from '../../services/posts';
 import { useUser } from '../../context/UserContext';
-import Posts from '../../components/Posts';
+import Posts from '../../components/PostForm';
 import PostDetail from '../PostDetail/PostDetail';
 
 export default function Home() {
@@ -10,7 +10,7 @@ export default function Home() {
   return (
     <>
       <h2>Welcome to InstaReddit</h2>
-      <Link to='posts'>Start posting posting</Link>
+      <Link to='post'>Start posting posting</Link>
       
     </>
   )

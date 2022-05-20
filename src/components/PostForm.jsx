@@ -5,11 +5,14 @@ import { useForm } from '../hooks/useForm';
 import { usePosts } from '../hooks/posts';
 
 
-export default function PostForm({ addPost }) {
+export default function PostForm() {
+  const { user } = useUser();
   const { addNewPost } = usePosts();
   const { formState, handleFormChange, setFormError } = useForm({ 
     name: '',
     description: '',
+    // user_id: user.id,
+    // email: user.email
   });
 
   async function handleSubmit(e) {
@@ -30,12 +33,14 @@ export default function PostForm({ addPost }) {
           id='name'
           name='name'
           placeholder='name'
+          value={formState.name}
           onChange={handleFormChange}
         />
         <input
         id='description'
         name='description'
         placeholder='description'
+        value={formState.description}
         onChange={handleFormChange}
         />
         <button>Add post</button>
