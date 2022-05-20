@@ -9,9 +9,19 @@ export async function getPosts() {
   return checkError(request);
 }
 
-export async function createPost({ user_id, description, email }) {
+export async function createPost({ user_id, description, email, name }) {
   const request = await client
     .from('posts')
-    .insert({ user_id: user_id, description, email });
+    .insert({ user_id: user_id, description, email, name });
+  return checkError(request);
+}
+
+
+export async function updatePost({ id, description }) {
+  const request = await client
+    .from('posts')
+    .update({ description })
+    .match({ id })
+    .single();
   return checkError(request);
 }

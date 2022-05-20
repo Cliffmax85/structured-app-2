@@ -19,24 +19,11 @@ export default function Home() {
     fetchPosts();
   }, []);
   
-  console.log(posts);
+  console.log('poststs', posts[0]);
   console.log(user);
 
   return (
     <>
-      <header
-        style={{
-          display: 'flex',
-          alignItems: 'center',
-          justifyContent: 'space-between',
-        }}
-      >
-        <Link to="/">
-          <h1>ironicgram</h1>
-        </Link>
-        <h3>Hello {user.email}</h3>
-        <button onClick={logout}>signout</button>
-      </header>
       <main>
         <Router>
           <Link to="/create">
@@ -46,20 +33,13 @@ export default function Home() {
             <Route path="/create">
               <h1>create</h1>
               <Posts addPost={fetchPosts} user_id={user.id}/>
-
-              <input
-                type="file"
-                accept="image/*"
-                id="upload-dish-image"
-                name="dish-image"
-              />
-              <form 
-                type="text"
-                id="description"
-              >
-              </form>
+              <ul>{posts.map((post => (
+                      <li key={post.id}>{post.description} 
+                        <br/> 
+                        {post.name}</li>
+                         )))}</ul>
             </Route>
-            <Route path="/details">
+            <Route path="/details/:id">
               <h1>details</h1>
             </Route>
             <Route>

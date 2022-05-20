@@ -5,13 +5,14 @@ import { useUser } from '../context/UserContext';
 export default function PostForm({ addPost }) {
   const { user } = useUser();
   const [description, setDescription] = useState('');
-  const [email, setEmail] = useState('')
+  const [name, setName] = useState('')
 
   const postInput = async (e) => {
     e.preventDefault();
-    const entry = await createPost({ user_id: user.id, description, email });
+    const entry = await createPost({ user_id: user.id, description, email: user.email, name });
     addPost(entry);
     setDescription('');
+    setName('');
   };
 
   return (
@@ -22,12 +23,13 @@ export default function PostForm({ addPost }) {
             name="description"
             value={description}
             onChange={(e) => setDescription(e.target.value)}
+            placeholder='enter post!'
           />
           <textarea
-            name='email'
-            value={email}
-            placeholder='enter email'
-            onChange={(e) => setEmail(e.target.value)}
+            name='name'
+            value={name}
+            placeholder='enter name'
+            onChange={(e) => setName(e.target.value)}
             />
           <button 
             type="submit"
