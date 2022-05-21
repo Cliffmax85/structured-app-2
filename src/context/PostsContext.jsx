@@ -2,7 +2,7 @@ import { createContext, useReducer } from "react";
 
 export const PostsContext = createContext();
 
-const postReducer = (posts, { type, payload}) => {
+const postReducer = (posts, { type, payload }) => {
     switch (type) {
         case 'create':
             return [payload[0], ...posts];

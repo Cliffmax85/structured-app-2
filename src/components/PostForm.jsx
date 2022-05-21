@@ -11,8 +11,8 @@ export default function PostForm() {
   const { formState, handleFormChange, setFormError } = useForm({ 
     name: '',
     description: '',
-    // user_id: user.id,
-    // email: user.email
+    user_id: user.id,
+    email: user.email
   });
 
   async function handleSubmit(e) {

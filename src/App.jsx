@@ -19,9 +19,11 @@ export default function App() {
             <Route path="/login">
               <Auth />
             </Route>
-            <PrivateRoute path="/post">
-              <PostList />
+            <PrivateRoute path="/create">
               <Post />
+            </PrivateRoute>
+            <PrivateRoute path="/posts">
+              <PostList />
             </PrivateRoute>
             <PrivateRoute path="/">
               <Home />

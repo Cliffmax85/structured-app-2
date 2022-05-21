@@ -1,13 +1,14 @@
 import { Link, useHistory } from "react-router-dom";
-import { useParams } from "react-router-dom/";
+// import { useParams } from "react-router-dom/";
 import { useUser } from "../context/UserContext";
-import { usePost } from "../hooks/posts";
+import { usePosts } from "../hooks/posts";
 
-export default function PostCard({ post }) {
-    const { name, description, id } = post();
+export default function PostCard({ posts }) {
+    const { name, description, id } = posts();
     const { user } = useUser();
-    const isOwner = user.id === user.user_id;
-console.log(name);
+    // const { posts } = usePosts();
+    const isOwner = user.id === posts.user_id;
+console.log('NAME???', name);
     return (
         <>
           <div>

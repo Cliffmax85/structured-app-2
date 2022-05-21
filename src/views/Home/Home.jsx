@@ -10,7 +10,8 @@ export default function Home() {
   return (
     <>
       <h2>Welcome to InstaReddit</h2>
-      <Link to='post'>Start posting posting</Link>
+      <Link to='/create'>Start posting posting</Link>
+      <Link to='/posts'>Check Posts</Link>
       
     </>
   )

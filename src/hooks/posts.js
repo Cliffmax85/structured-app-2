@@ -19,7 +19,7 @@ export function usePosts() {
                 dispatch({ type: 'reset', payload: payload });
                 console.log('|||LOAD', payload);
             } catch (error) {
-                throw new Error('Somethign went wrong getting data')
+                throw new Error('Somethign went wrong getting data');
             }
         };
         load();
