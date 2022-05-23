@@ -1,6 +1,6 @@
 import { useContext, useEffect, useState } from "react";
 import { PostsContext } from "../context/PostsContext";
-import { getPost, getPosts, updatePost, createPost } from "../services/posts";
+import { getPost, getPosts, updatePost, createPost, deletePost } from "../services/posts";
 
 export function usePosts() {
     const context = useContext(PostsContext);
@@ -82,6 +82,7 @@ export function usePost(id) {
 
         try {
             const payload = await deletePost(post.id);
+            console.log('payload', payload);
             setPost(null);
             if ( posts) dispatch({ type: 'delete', payload: payload });
             return payload;

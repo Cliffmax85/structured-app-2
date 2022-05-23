@@ -7,7 +7,7 @@ import { usePosts } from '../hooks/posts';
 
 export default function PostForm({ onSubmit }) {
   const { user } = useUser();
-  const { addNewPost, update } = usePosts();
+  const { addNewPost } = usePosts();
   const { formState, handleFormChange, setFormError } = useForm({ 
     name: '',
     description: '',
