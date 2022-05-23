@@ -25,10 +25,19 @@ export default function PostForm() {
 
   }
 
+  async function handleUpdate(e) {
+    e.preventDefault();
+
+    if (!formState.name) return setFormError('gimme a name!');
+    if (!formState.description) return setFormError('gimme your post');
+    addNewPost(formState);
+    onSubmit(formState);
+  }
+
   return (
     <section>
       <p>Post your post</p>
-      <form onSubmit={handleSubmit}>
+      <form onSubmit={onSubmit ? handleUpdate : handleSubmit}>
         <input
           id='name'
           name='name'

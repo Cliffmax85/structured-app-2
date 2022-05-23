@@ -6,7 +6,6 @@ import { usePost } from "../../hooks/posts";
 export default function PostDetail() {
   const { id } = useParams();
   const  { post, loading }  = usePost(id);
-  console.log(post, '|||||||||');
   if (loading) {
       return null;
   } 
