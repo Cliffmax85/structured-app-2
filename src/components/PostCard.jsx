@@ -21,6 +21,7 @@ export default function PostCard({ post }) {
                     <li>{post.description}</li>
                 </ul>
               </Link>
+              <br/>
               {isOwner && <Link to={`/posts/${post.id}/edit`}>
                   <button>Edit Post</button>
               </Link>}

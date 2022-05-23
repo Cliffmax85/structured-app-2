@@ -5,7 +5,7 @@ import { useForm } from '../hooks/useForm';
 import { usePosts } from '../hooks/posts';
 
 
-export default function PostForm({ onSubmit }) {
+export default function PostForm({ onSubmit, onCopy }) {
   const { user } = useUser();
   const { addNewPost } = usePosts();
   const { formState, handleFormChange, setFormError } = useForm({ 
@@ -33,9 +33,17 @@ export default function PostForm({ onSubmit }) {
     onSubmit(formState);
   }
 
+  // async function handleCopy(e) {
+  //   e.preventDefault();
+
+  //   if (!formState.name) return setFormError('gimme a name!');
+  //   if (!formState.description) return setFormError('gimme your post');
+  //   onCopy(formState);
+  // }
+
   return (
     <section>
-      <p>Post your post</p>
+      <p>Post or update your post</p>
       <form onSubmit={onSubmit ? handleUpdate : handleSubmit}>
         <input
           id='name'
@@ -51,7 +59,7 @@ export default function PostForm({ onSubmit }) {
         value={formState.description}
         onChange={handleFormChange}
         />
-        <button>Add post</button>
+        <button>Save post</button>
       </form>
     </section>
   )
