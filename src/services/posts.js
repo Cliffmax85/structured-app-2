@@ -34,3 +34,12 @@ export async function getPost(id) {
     .single();
   return checkError(request);
 }
+
+export async function deletePost(id) {
+  const request = await client
+    .from('posts')
+    .delete()
+    .match({ id })
+    .single();
+  return checkError(request);
+}

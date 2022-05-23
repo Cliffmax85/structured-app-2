@@ -75,7 +75,19 @@ export function usePost(id) {
         } catch (error) {
             throw new Error('failed to update');
         }
+    };
+
+    const del = async () => {
+        if (!post) return;
+
+        try {
+            const payload = await deletePost(post.id);
+            setPost(null);
+            if ( posts) dispatch({ type: 'delete', payload: payload });
+            return payload;
+        } catch (error) {
+            throw new Error('Did not delete');
+        }
     }
-// console.log('POSTTEST', post);
-    return { post, update, loading };
+    return { post, update, loading, del };
 }

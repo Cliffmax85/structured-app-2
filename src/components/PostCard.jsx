@@ -10,7 +10,7 @@ export default function PostCard({ post }) {
     return (
         <>
           <div>
-              <Link exact to={`/posts/${post.id}`}>
+              <Link to={`/posts/${post.id}`}>
                 <ul>
                     <li>{post.name}</li>
                     <li>{post.description}</li>

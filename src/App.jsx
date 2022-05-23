@@ -8,6 +8,7 @@ import { PostsProvider } from './context/PostsContext';
 import PostDetail from './views/PostDetail/PostDetail';
 import PostList from './components/PostsList';
 import Post from './views/Posts/Posts';
+import EditPost from './views/Posts/EditPost';
 
 export default function App() {
   return (
@@ -17,7 +18,7 @@ export default function App() {
           <Header />
           <Switch>
             <PrivateRoute exact path='/posts/:id/edit'>
-              
+              <EditPost />
             </PrivateRoute>
             <PrivateRoute exact path='/posts/:id'>
               <PostDetail />

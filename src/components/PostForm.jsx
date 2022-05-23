@@ -5,9 +5,9 @@ import { useForm } from '../hooks/useForm';
 import { usePosts } from '../hooks/posts';
 
 
-export default function PostForm() {
+export default function PostForm({ onSubmit }) {
   const { user } = useUser();
-  const { addNewPost } = usePosts();
+  const { addNewPost, update } = usePosts();
   const { formState, handleFormChange, setFormError } = useForm({ 
     name: '',
     description: '',
@@ -30,7 +30,6 @@ export default function PostForm() {
 
     if (!formState.name) return setFormError('gimme a name!');
     if (!formState.description) return setFormError('gimme your post');
-    addNewPost(formState);
     onSubmit(formState);
   }
 
