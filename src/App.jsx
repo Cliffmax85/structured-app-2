@@ -16,14 +16,20 @@ export default function App() {
         <PostsProvider>
           <Header />
           <Switch>
+            <PrivateRoute exact path='/posts/:id/edit'>
+              
+            </PrivateRoute>
+            <PrivateRoute exact path='/posts/:id'>
+              <PostDetail />
+            </PrivateRoute>
+            <PrivateRoute path="/posts">
+              <PostList />
+            </PrivateRoute>
             <Route path="/login">
               <Auth />
             </Route>
             <PrivateRoute path="/create">
               <Post />
-            </PrivateRoute>
-            <PrivateRoute path="/posts">
-              <PostList />
             </PrivateRoute>
             <PrivateRoute path="/">
               <Home />

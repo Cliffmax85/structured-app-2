@@ -1,24 +1,22 @@
 import { Link, useHistory } from "react-router-dom";
-// import { useParams } from "react-router-dom/";
 import { useUser } from "../context/UserContext";
-import { usePosts } from "../hooks/posts";
+import { usePost } from "../hooks/posts";
 
-export default function PostCard({ posts }) {
-    const { name, description, id } = posts();
+export default function PostCard({ post }) {
+    const { name, description, id } = usePost(post.id);
     const { user } = useUser();
     // const { posts } = usePosts();
-    const isOwner = user.id === posts.user_id;
-console.log('NAME???', name);
+    const isOwner = user.id === post.user_id;
     return (
         <>
           <div>
-              <Link to={`/posts/${id}`}>
+              <Link exact to={`/posts/${post.id}`}>
                 <ul>
-                    <li>{name}</li>
-                    <li>{description}</li>
+                    <li>{post.name}</li>
+                    <li>{post.description}</li>
                 </ul>
               </Link>
-              {isOwner && <Link to={`/posts/${id}/edit`}>
+              {isOwner && <Link to={`/posts/${post.id}/edit`}>
                   <button>Edit Post</button>
               </Link>}
           </div>

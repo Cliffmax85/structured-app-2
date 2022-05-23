@@ -4,6 +4,7 @@ import { getPosts } from '../../services/posts';
 import { useUser } from '../../context/UserContext';
 import Posts from '../../components/PostForm';
 import PostDetail from '../PostDetail/PostDetail';
+import PostList from '../../components/PostsList';
 
 export default function Home() {
 
@@ -11,7 +12,9 @@ export default function Home() {
     <>
       <h2>Welcome to InstaReddit</h2>
       <Link to='/create'>Start posting posting</Link>
+      <br/>
       <Link to='/posts'>Check Posts</Link>
+      {/* <PostList /> */}
       
     </>
   )

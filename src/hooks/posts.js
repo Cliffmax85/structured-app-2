@@ -17,7 +17,7 @@ export function usePosts() {
             try {
                 const payload = await getPosts();
                 dispatch({ type: 'reset', payload: payload });
-                console.log('|||LOAD', payload);
+                // console.log('|||LOAD', payload);
             } catch (error) {
                 throw new Error('Somethign went wrong getting data');
             }
@@ -29,7 +29,7 @@ export function usePosts() {
         try {
             const newPost = await createPost(post);
             dispatch({ type: 'create', payload: newPost })
-            console.log('||||OTHER PAYLOAD', newPost);
+            // console.log('||||OTHER PAYLOAD', newPost);
         } catch (error) {
             throw new Error('could not add new post');
         }
@@ -46,14 +46,16 @@ export function usePost(id) {
 
     const { posts, dispatch } = context;
 
-    const [post, setPost] = useState(null);
-    console.log('posts2', post);
+    const [post, setPost] = useState({name: '', description: ''});
+    const [loading, setLoading]
+ = useState(true);    // console.log('posts2', post);
 
     useEffect(() => {
         const load = async () => {
             try {
                 const post = await getPost(id);
                 setPost(post);
+                setLoading(false);
             } catch (error) {
                 throw new Error('Falied to get post by id')
             }
@@ -74,6 +76,6 @@ export function usePost(id) {
             throw new Error('failed to update');
         }
     }
-
-    return { post, update };
+// console.log('POSTTEST', post);
+    return { post, update, loading };
 }
